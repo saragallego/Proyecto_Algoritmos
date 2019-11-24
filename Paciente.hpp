@@ -3,6 +3,14 @@
 #include <iostream>
 using namespace std;
 
+/*
+
+    CLASE QUE REPRESENTA A UN PACIENTE
+        - Nombre del paciente (STRING).
+        - Grado de urgencia (INT).
+        - descripcion de los sintomas (STRING).
+*/
+
 class Paciente{
     public:
         string nombre;
@@ -23,6 +31,3 @@ class Paciente{
 
 #endif
 
-
-//revisar ordenar por prioridad, retorna un vector de enteros ordenado y deberia retornar un vector de pacientes
-//getEspecialidad funciona, mejorar!!!

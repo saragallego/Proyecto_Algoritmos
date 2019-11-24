@@ -8,43 +8,42 @@ Doctores::Doctores(string newName, string newEspecialidad){
     for(int i = 0; i <7; i++){
         disponibilidadSemanal.push_back(libre);
     }
-}
+}//constructor parametrizado
 
 ostream& operator<<(ostream& os, Doctores& myDoc){
-            string Dias[] = {"Lunes", "Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"};
+            string Dias[] = {"lunes", "martes","miercoles","jueves","viernes","sabado","domingo"};
             os << "Nombre del doctor: " << myDoc.getName() << endl;
             os << "Especialidad del doctor: " << myDoc.getEspecialidad() << endl;
-            os << "Horario del doctor: " << endl;
             for(int i = 0; i < 7; i++){
-                os << "\nEl dia " << Dias[i] << ": ";
+                os << "\nEn el dia " << Dias[i] << ":\n";
                 if(myDoc.getDispDia(i) == true){
-                    os << "Está libre. " << endl;
+                    os << "\tEstá libre. " << endl;
                 }else{
-                    os << "No está libre." << endl;
+                    os << "\tNo está libre." << endl;
                 }
                 if(myDoc.getDispDia(i) == false){
-                    os << "\n\t\tOcupado con el paciente: \n\t\t\t" << myDoc.disponibilidadSemanal[i].myPaciente.nombre << "\n\t\tCon Nivel de Urgencia: " << myDoc.disponibilidadSemanal[i].myPaciente.nivelUrgencia << endl;
+                    os << "\t\tOcupado con el paciente: \n\t\t\t" << myDoc.disponibilidadSemanal[i].myPaciente.nombre << "\n\t\tcon nivel de urgencia: " << myDoc.disponibilidadSemanal[i].myPaciente.nivelUrgencia;
                 }
             }
     return os;
-}
+}//el operador '<<' sirve para la insercion de objetos tipo Doctores
 
 string Doctores::getName(){
     return nombre;
-}
+}//retorna el nombre del doctor 
 
 string Doctores::getEspecialidad(){
     return especialidad;
-}
+}//retorna la especialidad del doctor 
 
 bool Doctores::getDispDia(int dia){
     return disponibilidadSemanal[dia].disponibilidad;
-}
+}//retorna si el doctor esta libre o no ese dia
 
-void Doctores::asignarCita(int dia, Paciente P){
+void Doctores::asignarCita(int dia, Paciente Pacientico){
     disponibilidadSemanal[dia].disponibilidad = false;
-    disponibilidadSemanal[dia].myPaciente = P;
-}
+    disponibilidadSemanal[dia].myPaciente = Pacientico;
+}//asigna un paciente a el dia dado dentro del horario del doctor y cambia la disponibilidad del dia 
 
 int Doctores::proximaCitaDisp(){
     for(int i = 0; i < 7; i++){
@@ -53,4 +52,4 @@ int Doctores::proximaCitaDisp(){
         }
     }
     return -1;
-}
+}//metodo que retorna entero que representa dia mas proximo de la semana en el cual el doctor tiene disponibilidad 

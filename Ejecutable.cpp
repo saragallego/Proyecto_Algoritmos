@@ -1,8 +1,8 @@
 #include "Paciente.hpp"
 #include "Doctores.hpp"
 #include <stdlib.h>
-#include <iostream>
-#include <queue>
+#include <iostream> 
+#include <queue> 
 #include <fstream>
 #include <stdlib.h>
 using namespace std;
@@ -19,21 +19,21 @@ bool checkEspecialidadesRepetidas(string esp, vector<Doctores> vec){
 
 void citasMedicas(){
     vector<string> nombres;
-    nombres.push_back("Dr. Carlos Rodríguez");
-    nombres.push_back("Dr. Juan Gómez");
-    nombres.push_back("Dr. Pablo López");
-    nombres.push_back("Dr. Santiago González");
-    nombres.push_back("Dra. Laura García");
-    nombres.push_back("Dra. Daniela Martínez");
-    nombres.push_back("Dra. Sandra Ramírez");
-    nombres.push_back("Dra. Paola Sánchez");
-    nombres.push_back("Dr. Manuel Hernández");
-    nombres.push_back("Dr. Julian Díaz");
+    nombres.push_back("Dr. Carlos");
+    nombres.push_back("Dr. Juan");
+    nombres.push_back("Dr. Pablo");
+    nombres.push_back("Dr. Santiago");
+    nombres.push_back("Dra. Laura");
+    nombres.push_back("Dra. Daniela");
+    nombres.push_back("Dra. Sandra");
+    nombres.push_back("Dra. Paola");
+    nombres.push_back("Dr. Manuel");
+    nombres.push_back("Dr. Julian");
 
     int myRand = 0;
     //CREACION PACIENTES
     cout << "\n\n\n\n\n";
-    cout << "Ingrese los datos de los pacientes que se les agendara cita." << endl;
+    cout << "ingrese datos de pacientes a los cuales se les agendara cita." << endl;
     vector<Paciente> misPacientesVec;
     priority_queue<Paciente> misPacientesQueue;
     string name;
@@ -42,7 +42,7 @@ void citasMedicas(){
     bool more = true;
     while(more){
         cout << "\nIngrese el nombre del paciente\n";
-        cin >> name;
+        getline(cin, name);
         cout << "Ingrese el nivel de urgencia.\n";
         cin >> urg;
         cin.ignore();
@@ -52,7 +52,7 @@ void citasMedicas(){
         P.descripcion += " .";
         misPacientesQueue.push(P);
         string resp;
-        cout << "\nDesea agregar mas pacientes?" << endl;
+        cout << "\ndesea agregar mas pacientes?" << endl;
         cin >> resp;
         if(resp == "si"){
             more = true;
@@ -75,11 +75,11 @@ void citasMedicas(){
             nombres.pop_back();
         }
     }
-    cout << "\n\n\n\n\nLos Doctores solicitados son: \n\n";
+    cout << "\n\nLos Doctores solicitados son: \n\n\n";
     for(int i = 0; i < misDoctores.size(); i++){
-        cout << misDoctores[i].getName() << ". Su especialidad es: "<< misDoctores[i].getEspecialidad() <<endl << endl;
+        cout << misDoctores[i].getName() << " y su especialidad es: "<< misDoctores[i].getEspecialidad() <<endl << endl;
     }
-
+    
 
     //ASIGNACION CITAS POR ORDEN DE LLEGADA
     for(int i = 0; i < misPacientesVec.size(); i ++){
@@ -99,18 +99,18 @@ void citasMedicas(){
         file.close();
     }
 
-
-    cout << "\n\nLos horarios de los doctores son: \n\n";
+    
+    cout << "\n\nLos horarios de los doctores ahora son: \n\n\n";
     for(int i = 0; i < misDoctores.size(); i++){
         cout << misDoctores[i] << endl << endl;
     }
-
-    cout << "\nSe crearon correctamente los archivos con los horarios de los doctores.\n\n\n";
+    
+    cout << "\nSe crearon correctamente los archivos con los horarios de los doctores.\n\n\n"; 
 
 }
 
 int main(){
-
+    
     citasMedicas();
 
 

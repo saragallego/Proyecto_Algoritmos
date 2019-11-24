@@ -5,14 +5,14 @@ Paciente::Paciente(){
     nombre = " ";
     nivelUrgencia = 0;
     descripcion = " ";
-}//constructor
+}//constructor 
 
 ostream& operator<<(ostream& os, Paciente& myPaciente){
     os << "nombre: " <<myPaciente.nombre << endl;
     os << "nivel de urgencia: "<<myPaciente.nivelUrgencia << endl;
     os << "descripcion: "<<myPaciente.descripcion << endl;
     return os;
-}
+}//el operador '<<' sirve para la insercion de un objeto de este tipo 
 
 Paciente::Paciente(string Name, int Level, string Description){
     nombre = Name;
@@ -40,10 +40,10 @@ void Paciente::operator=(const Paciente P){
     nombre = P.nombre;
     nivelUrgencia = P.nivelUrgencia;
     descripcion = P.descripcion;
-}
+}//el operadpr '=', sirve como operador de asignacion 
 
 string Paciente::getEspecialidadPaciente()const{
-    string especialidades[7] = {"Oftalmología", "Cardiología", "Neurología", "Gastroenterología", "Traumatología","Neumología", "General"};
+    string especialidades[7] = {"Oftalmologia", "Cardiologia", "Neurologia", "Gastroenterologia", "Traumatologia","Neumologia", "General"};
     int numDePalabras = 0;
     vector<string> Palabras;
     string word = "";
@@ -67,13 +67,13 @@ string Paciente::getEspecialidadPaciente()const{
      }
      int vals[7] = {0,0,0,0,0,0,0};
      for(int i = 0; i < numDePalabras; i++){
-         if(Palabras[i] == "ojos" || Palabras[i]=="ojo" ||Palabras[i]=="parpado" || Palabras[i]=="pupilas" || Palabras[i] == "iris" || Palabras[i]=="ceguera"){
+         if(Palabras[i] == "ojos" || Palabras[i]=="parpado" || Palabras[i]=="pupilas" || Palabras[i] == "iris" || Palabras[i]=="ceguera"){
              vals[0]++;
          }//oftalmologia
          else if(Palabras[i] == "corazon" || Palabras[i]=="desmayo" || Palabras[i]=="presion" || Palabras[i] == "taquicardia" || Palabras[i]=="pecho"){
              vals[1]++;
          }//cardiologia
-         else if(Palabras[i] == "cabeza" || Palabras[i]=="cerebro" || Palabras[i]=="tics" || Palabras[i] == "mareo" || Palabras[i]=="temblor" || Palabras[i]=="migraña"){
+         else if(Palabras[i] == "cabeza" || Palabras[i]=="cerebro" || Palabras[i]=="tics" || Palabras[i] == "mareo" || Palabras[i]=="temblor"){
              vals[2]++;
          }//neurologia
          else if(Palabras[i] == "estomago" || Palabras[i]=="diarrea" || Palabras[i]=="vomito" || Palabras[i] == "gastritis" || Palabras[i]=="apetito"){
@@ -107,4 +107,4 @@ string Paciente::getEspecialidadPaciente()const{
 
 
      return especialidades[6];
-}
+}//retorna la especialidad que necesita el paciente, dada su descripcion. 
